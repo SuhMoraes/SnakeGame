@@ -16,6 +16,9 @@ let food = {
   y: Math.floor(Math.random() * 15 + 1) * box
 }
 
+/* Pontuação do jogo*/
+let score = 0;
+
 function criarBG(){
   context.fillStyle ="#74c69d";
   context.fillRect(0, 0, 16 * box, 16 * box); //Desenha o local onde acontece o jogo
@@ -42,7 +45,7 @@ function drawFood() {
  }
 
 
-/* */
+/* Iniciando o jogo */
 function iniciarJogo(){
   if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
   if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
@@ -52,13 +55,22 @@ function iniciarJogo(){
   for(i = 1; i < snake.length; i++) {
       if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
         clearInterval(jogo);
-        alert('Game Over :(');
+        alert('Game Over :( Pontuação: ' + score);
       }
   }
+
+  /* Função de pontuação*/
+  function drawScore() {
+    context.fillStyle = "black";
+    context.font = "12px Verdana";
+    context.fillText("Score " + score, canvas.width-60, 20);
+  }
+
 
   criarBG();
   criarCobrinha();
   drawFood();
+  drawScore();
 
   let snakeX = snake[0].x;
   let snakeY = snake[0].y;
@@ -71,7 +83,8 @@ function iniciarJogo(){
   if(snakeX != food.x || snakeY != food.y) {
     snake.pop();
   } else {food.x = Math.floor(Math.random() * 15 + 1) * box;
-    food.y = Math.floor(Math.random() * 15 + 1) * box    
+    food.y = Math.floor(Math.random() * 15 + 1) * box   
+   score++;
   }  
 
   let newHead = {
