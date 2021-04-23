@@ -1,0 +1,46 @@
+
+body{
+  height: 95vh;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  flex-direction: column;
+}
+
+  @font-face {
+    font-family: "dpcomic";
+    src: url(font/dpcomic.ttf);
+  }
+
+  h1{
+    color: #fff;
+    font-family: 'DPComic';
+    font-size: 4rem;
+    font-weight: normal;
+  }
+
+  h2, li {
+    color: #fff;
+    font-family: 'DPComic';
+    font-weight: normal;
+  }
+
+  li{
+  list-style: none;
+  font-size: 1.5rem;
+  }
+
+  @media screen and (max-width:700px){
+    canvas{
+      height: 60%;
+      width: 80%;           
+    }
+    h1{
+      width: 50%;
+      text-align: center;
+      margin-top: 200px;
+    }
+  }
+ 
